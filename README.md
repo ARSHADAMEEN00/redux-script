@@ -1,8 +1,6 @@
 # redux-script
 
-## after install add 
-"redux-script": "node script.js"
-to your script
+### after install add "redux-script": "node script.js" to your script in package.json
 
 to generate code files for async API calls and Redux store slices based on the provided titles. Let's break down the code and describe its function:
 
