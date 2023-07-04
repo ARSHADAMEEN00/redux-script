@@ -1,9 +1,55 @@
-# redux-script
+# Redux-Script
 
-### after install add "redux-script": "node script.js" to your script in package.json
+Redux-Script is a package that generates code files for async API calls and Redux store slices based on the provided titles. It automates the process of creating Redux-related code, making it easier and more efficient to set up your Redux store.
 
+## Installation
+
+To install Redux-Script, use the following command:
+
+## shell
+```shell
+npm install redux-script
+```
+
+## Usage
+1. After installing Redux-Script, add the following script to your package.json file:<br />
+"scripts": {<br />
+   `"redux-script": "node script.js"`<br />
+}
+2. Save the changes to your package.json file.
+3. Run the Redux-Script command using npm:
+   npm run redux-script
+This will execute the "script.js" file provided by Redux-Script, generating the necessary code files for async API calls and Redux store slices based on the titles you provide.
+
+```Example
+npm run redux-script --all 'YOUR_API_NAMES'
+```
+
+
+Make sure you have the required dependencies and configurations in place before running the Redux-Script command. Refer to the documentation or examples provided by Redux-Script for more details.
+
+<hr />
+
+### License
+This project is licensed under the Apache-2.0 License. See the LICENSE file for details.
+
+### Issues
+If you encounter any issues or have any suggestions for improvement, please report them on the [issue tracker](https://github.com/ARSHADAMEEN00/redux-script#readme)
+
+### Contributing
+Contributions are welcome! If you would like to contribute to Redux-Script, please follow the guidelines in the [CONTRIBUTING](https://github.com/ARSHADAMEEN00/redux-script#readme) file.
+
+### Acknowledgements
+Special thanks to Ameen Arshad Nediya for creating and maintaining Redux-Script.
+
+### Additional Resources
+. [Documentation](https://www.npmjs.com/package/redux-script?activeTab=readme)
+. [GitHub Repository](https://github.com/ARSHADAMEEN00/redux-script)
+
+<hr />
+
+### know more
 to generate code files for async API calls and Redux store slices based on the provided titles. Let's break down the code and describe its function:
-
 
 The script accepts command-line arguments to determine its behavior. It expects two arguments:
 
