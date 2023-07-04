@@ -74,6 +74,7 @@ The createFolderIfNotExists function is another helper function used to create n
 
 The createFoldersAndFiles function is the main entry point of the script:
 
-It checks the provided command and executes the corresponding functions (asyncApis, reduxStore, or both) based on the command-line arguments.
+It checks the provided command and executes the corresponding functions
+(asyncApis, reduxStore, or both) based on the command-line arguments.
 It also handles folder creation and displays success or error messages for each generated file.
 Overall, this script provides a convenient way to generate code files for async API calls and Redux store slices based on the provided titles. It automates the process of creating boilerplate code for common operations and can save time when setting up API integration and Redux state management in a project
