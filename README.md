@@ -1,4 +1,4 @@
-# Redux-Script
+# [Redux-Script](https://www.npmjs.com/package/redux-script?activeTab=readme)
 
 Redux-Script is a package that generates code files for async API calls and Redux store slices based on the provided titles. It automates the process of creating Redux-related code, making it easier and more efficient to set up your Redux store.
 
