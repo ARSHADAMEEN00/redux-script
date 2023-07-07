@@ -1,27 +1,6 @@
 // start
 const fs = require("fs");
 
-const titlesFromCommand = process.argv[3];
-
-if (process.argv[2] === undefined) {
-  console.error(
-    "\x1b[31m%s\x1b[0m",
-    "Invalid command. Use '--all' to run both functions, '--api' to run asyncApis, or '--store' to run reduxStore."
-  );
-
-  process.exit(1);
-}
-
-if (!titlesFromCommand) {
-  console.error(
-    "\x1b[31m%s\x1b[0m",
-    "Please provide titles for file generation."
-  );
-
-  process.exit(1);
-}
-const titles = titlesFromCommand?.split(",");
-
 // api
 const createAsyncThunkCode = (name) => `
 export const create${name} = createAsyncThunk('${name.toLowerCase()}s/create', async ({ state, dispatch, handleClose, handleClear }) => {
@@ -232,13 +211,13 @@ const writeFile = (fileName, code) => {
   }
 };
 
-const asyncApis = () => {
+const asyncApis = (modelName) => {
   const top = `
   import { createAsyncThunk } from '@reduxjs/toolkit';
   import { activeSnack } from '../store/common';
   import { del, get, post, put } from './http';
   `;
-  titles?.map((name) => {
+  modelName?.map((name) => {
     if (name.charAt(0) !== name.charAt(0).toUpperCase()) {
       console.error(
         "\x1b[31m%s\x1b[0m",
@@ -267,23 +246,8 @@ const asyncApis = () => {
   });
 };
 
-const reduxStore = () => {
-  // titles?.map((name) => {
-  //   if (name.charAt(0) !== name.charAt(0).toUpperCase()) {
-  //     console.error(
-  //       "\x1b[31m%s\x1b[0m",
-  //       `Invalid file name: ${name}. The first letter should be capitalized.`
-  //     );
-  //     return;
-  //   }
-  //   const code = reduxStoreAll(name);
-  //   const fileName = `src/server/store/${name.toLowerCase()}.js`;
-  //   writeFile(fileName, code);
-
-  //   console.log(`File generated successfully for ${name}.`);
-  //   return `${name.toLowerCase()}s: ${name}Reducer,`;
-  // });
-  const reducerEntries = titles?.map((name) => {
+const reduxStore = (modelName) => {
+  const reducerEntries = modelName?.map((name) => {
     if (name.charAt(0) !== name.charAt(0).toUpperCase()) {
       console.error(
         "\x1b[31m%s\x1b[0m",
@@ -304,7 +268,7 @@ const reduxStore = () => {
 
   const storeContent = `
 import { configureStore } from '@reduxjs/toolkit';
-${titles
+${modelName
   ?.map((name) => `import ${name}Reducer from './${name.toLowerCase()}';`)
   .join("\n")}
 export default configureStore({
@@ -329,28 +293,23 @@ const createFolderIfNotExists = (folderPath) => {
 };
 
 // package handler
-const createFoldersAndFiles = () => {
+function generateFiles(command, modelName) {
   // Create folders
   createFolderIfNotExists("src");
   createFolderIfNotExists("src/server");
   createFolderIfNotExists("src/server/store");
   createFolderIfNotExists("src/server/api");
 
-  if (process.argv[2] === "--all") {
-    asyncApis();
-    reduxStore();
-  } else if (process.argv[2] === "--api") {
-    asyncApis();
-  } else if (process.argv[2] === "--store") {
-    reduxStore();
-  } else {
-    console.error(
-      "\x1b[31m%s\x1b[0m",
-      "Invalid command. Use '--all' to run both functions, '--api' to run asyncApis, or '--store' to run reduxStore."
-    );
+  if (command === "all") {
+    asyncApis(modelName);
+    reduxStore(modelName);
+  } else if (command === "api") {
+    asyncApis(modelName);
+  } else if (command === "store") {
+    reduxStore(modelName);
   }
 
-  console.log("Happy Hacking! 🔥 Osperb --ameen😍");
-};
+  console.log("Happy Hacking! 🔥 Osperb ameen😍");
+}
 
-createFoldersAndFiles();
+module.exports = { generateFiles };

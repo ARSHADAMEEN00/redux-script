@@ -1,11 +1,17 @@
 {
   "name": "redux-script",
-  "version": "1.0.4",
+  "version": "1.2.1",
   "description": "to generate code files for async API calls and Redux store slices based on the provided titles,The first argument specifies the desired action. It can be \"--all\" to run both functions (asyncApis and reduxStore), \"--api\" to run asyncApis only, or \"--store\" to run reduxStore only.",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "redux-script",
-    "postinstall": "node script.js"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "redux-script": "index.js"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security"
   },
   "repository": {
     "type": "git",
@@ -15,7 +21,9 @@
     "automation",
     "redux",
     "redux-toolkit",
-    "scripts"
+    "scripts",
+    "auto generate codes",
+    "crud builder"
   ],
   "author": "Ameen Arshad Nediya",
   "license": "Apache-2.0",
