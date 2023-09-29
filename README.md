@@ -18,7 +18,19 @@ npm install -g redux-script
     ```shell
     redux-script all <api_name>
     ```
-    This will execute the "script.js" file provided by Redux-Script, generating the necessary code files for async API calls and Redux store slices based on the titles you provide.
+    This will execute the "index.js" file provided by Redux-Script, generating the necessary code files for async API calls and Redux store slices based on the titles you provide.
+
+# Run both functions
+
+redux-script --all model1,model2,model3
+
+# Run asyncApis only
+
+redux-script --api model1,model2,model3
+
+# Run reduxStore only
+
+redux-script --store model1,model2,model3
 
 ```Example
  redux-script all 'Products'

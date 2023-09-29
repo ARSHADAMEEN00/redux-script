@@ -309,7 +309,7 @@ function generateFiles(command, modelName) {
     reduxStore(modelName);
   }
 
-  console.log("Happy Hacking! 🔥 Osperb ameen😍");
+  console.log("Happy Hacking! 🔥 Osperb");
 }
 
 module.exports = { generateFiles };
